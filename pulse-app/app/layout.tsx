@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body style={{ background: '#111111', color: '#F5F5F5', minHeight: '100vh' }}>
+      <body suppressHydrationWarning style={{ background: '#111111', color: '#F5F5F5', minHeight: '100vh' }}>
         {children}
       </body>
     </html>

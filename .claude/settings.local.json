@@ -9,7 +9,8 @@
       "Bash(curl:*)",
       "Bash(start:*)",
       "Bash(powershell:*)",
-      "Bash(cmd:*)"
+      "Bash(cmd:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

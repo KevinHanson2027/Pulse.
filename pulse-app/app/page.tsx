@@ -32,7 +32,7 @@ export default function Landing() {
         <Link href="/auth?mode=login" style={{
           fontSize: 12,
           fontWeight: 700,
-          color: '#555',
+          color: '#888',
           textDecoration: 'none',
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
@@ -70,38 +70,14 @@ export default function Landing() {
           fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
           fontSize: 'clamp(40px, 7vw, 80px)',
           fontWeight: 800,
-          lineHeight: 1.0,
+          lineHeight: 1.05,
           letterSpacing: '-0.04em',
           color: '#F5F5F5',
-          marginBottom: 8,
+          marginBottom: 40,
           maxWidth: 720,
         }}>
-          The Operating System
+          Never Miss a Beat.
         </h1>
-        <h1 style={{
-          fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
-          fontSize: 'clamp(40px, 7vw, 80px)',
-          fontWeight: 800,
-          lineHeight: 1.0,
-          letterSpacing: '-0.04em',
-          color: '#FF4D4D',
-          marginBottom: 32,
-          maxWidth: 720,
-        }}>
-          for the Disciplined.
-        </h1>
-
-        <p style={{
-          fontSize: 16,
-          color: '#555',
-          lineHeight: 1.7,
-          maxWidth: 400,
-          marginBottom: 48,
-          fontFamily: "'Inter', system-ui, sans-serif",
-        }}>
-          Never Miss a Beat.<br />
-          Discipline becomes social currency.
-        </p>
 
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/auth?mode=signup" style={{
@@ -116,7 +92,7 @@ export default function Landing() {
             textTransform: 'uppercase',
             fontFamily: "'Inter', system-ui, sans-serif",
           }}>
-            Start Execution
+            Get Started
           </Link>
           <Link href="/auth?mode=login" style={{
             display: 'inline-block',
@@ -134,46 +110,6 @@ export default function Landing() {
             Login
           </Link>
         </div>
-      </div>
-
-      {/* Stats strip */}
-      <div style={{
-        borderTop: '1px solid #1e1e1e',
-        display: 'flex',
-      }}>
-        {[
-          { value: '10K+', label: 'Active Operators' },
-          { value: '2.4M', label: 'Habits Logged' },
-          { value: '94%', label: 'Streak Retention' },
-          { value: '48h', label: 'Avg Session Depth' },
-        ].map((stat, i) => (
-          <div key={i} style={{
-            flex: 1,
-            textAlign: 'center',
-            padding: '28px 16px',
-            borderRight: i < 3 ? '1px solid #1e1e1e' : 'none',
-          }}>
-            <div style={{
-              fontFamily: "'Sora', 'Inter', system-ui, sans-serif",
-              fontSize: 28,
-              fontWeight: 800,
-              color: '#FF4D4D',
-              letterSpacing: '-0.02em',
-            }}>
-              {stat.value}
-            </div>
-            <div style={{
-              fontSize: 11,
-              color: '#444',
-              marginTop: 4,
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              fontFamily: "'Inter', system-ui, sans-serif",
-            }}>
-              {stat.label}
-            </div>
-          </div>
-        ))}
       </div>
     </main>
   );

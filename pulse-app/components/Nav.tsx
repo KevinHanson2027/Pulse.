@@ -1,16 +1,43 @@
 'use client';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { logout } from '@/lib/mockAuth';
-import { User } from '@/lib/mockDB';
+import { User, getAvatarUrl } from '@/lib/mockDB';
 import Logo from './Logo';
 
 const NAV_ITEMS = [
   { href: '/dashboard', label: 'Dashboard' },
-  { href: '/physical', label: 'Physical' },
-  { href: '/feed', label: 'Feed' },
-  { href: '/leaderboard', label: 'Rank' },
+  { href: '/health', label: 'Health' },
+  { href: '/social', label: 'Social' },
+  { href: '/leaderboard', label: 'Leaderboard' },
 ];
+
+function Avatar({ user }: { user: User }) {
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  useEffect(() => { setAvatarUrl(getAvatarUrl(user.id)); }, [user.id]);
+
+  const color = user.avatarColor ?? '#FF4D4D';
+  const initials = user.displayName.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+
+  return (
+    <Link href="/profile" style={{
+      width: 32, height: 32, flexShrink: 0,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      textDecoration: 'none', overflow: 'hidden',
+      background: avatarUrl ? 'transparent' : color,
+    }}>
+      {avatarUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={avatarUrl} alt="" style={{ width: 32, height: 32, objectFit: 'cover' }} />
+      ) : (
+        <span style={{ fontSize: 11, fontWeight: 800, color: color === '#F5F5F5' ? '#111' : '#F5F5F5', fontFamily: "'Sora', sans-serif" }}>
+          {initials}
+        </span>
+      )}
+    </Link>
+  );
+}
 
 export default function Nav({ user }: { user: User }) {
   const path = usePathname();
@@ -37,11 +64,13 @@ export default function Nav({ user }: { user: User }) {
       zIndex: 100,
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
-        <Logo size="sm" />
+        <Link href="/dashboard" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <Logo size="sm" />
+        </Link>
 
         <div style={{ display: 'flex' }}>
           {NAV_ITEMS.map(item => {
-            const active = path === item.href;
+            const active = path === item.href || (item.href === '/health' && path === '/physical') || (item.href === '/social' && path === '/feed');
             return (
               <Link key={item.href} href={item.href} style={{
                 display: 'block',
@@ -52,7 +81,7 @@ export default function Nav({ user }: { user: User }) {
                 fontWeight: 600,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: active ? '#FF4D4D' : '#555',
+                color: active ? '#FF4D4D' : '#888',
                 textDecoration: 'none',
                 borderBottom: active ? '2px solid #FF4D4D' : '2px solid transparent',
                 transition: 'color 0.15s',
@@ -65,7 +94,7 @@ export default function Nav({ user }: { user: User }) {
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
         <div style={{ textAlign: 'right' }}>
           <div style={{
             fontSize: 13,
@@ -76,15 +105,16 @@ export default function Nav({ user }: { user: User }) {
             {user.displayName}
           </div>
           <div style={{ fontSize: 11, color: '#FF4D4D', fontWeight: 600, letterSpacing: '0.06em' }}>
-            {user.xp.toLocaleString()} OU
+            {user.xp.toLocaleString()} XP
           </div>
         </div>
+        <Avatar user={user} />
         <button
           onClick={handleLogout}
           style={{
             background: 'transparent',
             border: '1px solid #2a2a2a',
-            color: '#555',
+            color: '#888',
             padding: '6px 14px',
             fontSize: 11,
             fontWeight: 700,
