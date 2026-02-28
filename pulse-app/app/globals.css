@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --red: #FF4D4D;
+  --blue: #4DA6FF;
+  --charcoal: #111111;
+  --surface: #1a1a1a;
+  --surface-2: #222222;
+  --border: #2a2a2a;
+  --border-light: #333333;
+  --text: #F5F5F5;
+  --text-muted: #666666;
+  --text-dim: #444444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: #111111;
+  color: #F5F5F5;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Sora', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+input, textarea, select {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  color: #F5F5F5;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: 'Inter', system-ui, sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #FF4D4D;
+}
+
+input::placeholder {
+  color: #444444;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #111111; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; }
