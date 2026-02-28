@@ -99,7 +99,7 @@ export default function Landing() {
           marginBottom: 48,
           fontFamily: "'Inter', system-ui, sans-serif",
         }}>
-          Don&#39;t Miss a Beat.<br />
+          Never Miss a Beat.<br />
           Discipline becomes social currency.
         </p>
 
