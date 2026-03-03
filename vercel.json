@@ -1,6 +1,3 @@
 {
-  "buildCommand": "cd pulse-app && npm run build",
-  "outputDirectory": "pulse-app/.next",
-  "installCommand": "cd pulse-app && npm install",
   "framework": "nextjs"
 }
